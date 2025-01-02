@@ -1,0 +1,60 @@
+﻿@model List<Category>
+
+
+
+
+<dev class="container">
+    <dev class="row pt-4 pd-4">
+           <dev class="col-6">
+            <h2 class="text-dark">C A T E G O R Y <i class="bi bi-heart-fill"></i></h2>
+           </dev>
+    
+    <div class="col-6 text-end">
+        <a asp-controller="Category" asp-action="Create" class="btn btn-dark">
+                <i class="bi bi-plus-circle "></i> Add New Category</a>
+    </div>
+    </dev>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category List</title>
+</head>
+<body>
+    
+    <table class="table table-bordered table-striped" >
+        <thead>
+            <tr class="table-dark">
+              
+                <th>Category Name</th>
+                <th>Display Order</th>
+                <th>Action</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model.OrderBy(u => u.Id))
+            {
+               <tr class="table-light">
+                    
+                    <td>@obj.Name</td>
+                    <td>@obj.DisplayOrder</td>
+
+                    <td>
+                        <div class = "w-75 btn-group" role="group">
+
+                                <a asp-controller="Category" asp-action="Edit"  class="btn btn-dark mx-0" asp-route-id="@obj.Id">
+                                        <i class="bi bi-pencil-square"></i> Edit</a>
+
+                                <a asp-controller="Category" asp-action="Delete" class="btn btn-danger mx-0" asp-route-id="@obj.Id">
+                                    <i class="bi bi-trash"></i> Delete</a>
+                        </div>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</dev>
+</html>
